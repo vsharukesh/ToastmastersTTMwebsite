@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharuu's Table Topics - Sci-Fi Edition</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300ffff;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238a2be2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)' opacity='0.2'/%3E%3Cpath d='M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z' fill='url(%23grad)' stroke='%2300ffff' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23fff'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles-modern.css">
+    <link rel="stylesheet" href="welcome-styles.css">
+</head>
+<body>
+    <!-- Neural Network Background -->
+    <canvas id="neuralNetworkCanvas" class="neural-network-bg"></canvas>
+    
+    <div class="container">
+        <header>
+            <div class="main-title">Sharuu's Table Topics</div>
+            <p class="subtitle">Choose your sector and test your impromptu speaking skills!</p>
+        </header>
+
+        <!-- Welcome Page -->
+    <div id="welcomePage" class="page active">
+        <div class="welcome-container">
+            <div class="welcome-title">
+                <span class="welcome-text">Welcome to</span>
+                <span class="table-topics">Table Topics</span>
+            </div>
+            
+            <div class="credit-by">- By TM Sharu</div>
+            
+            <div class="theme-info">
+                <span class="theme-label">Theme:</span>
+                <span class="theme-name">Commicon</span>
+            </div>
+            
+            <div class="date-info">
+                <span class="date-label">ALETHEO MEET 29</span>
+            </div>
+            
+            <button class="lets-go-btn" onclick="goToMainPage()">
+                <span class="btn-text"><i class="fas fa-rocket"></i> Let's Go</span>
+                <div class="superhero-effect"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" class="page">
+        <!-- Space Navigation Star Map -->
+        <div id="starMapNav" class="star-map-nav">
+            <div class="star-map-container">
+                <div class="star-map-header">
+                    <div class="star-map-title"><i class="fas fa-satellite"></i> SECTOR NAVIGATION</div>
+                    <div class="star-map-controls">
+                        <button class="star-map-btn" onclick="toggleStarMap()"><i class="fas fa-globe"></i></button>
+                    </div>
+                </div>
+                <div class="star-map-viewport" id="starMapViewport">
+                    <canvas id="starMapCanvas" width="800" height="600"></canvas>
+                    <div class="star-map-overlay">
+                        <div class="coordinates" id="coordinates">X: 0 Y: 0</div>
+                        <div class="zoom-controls">
+                            <button onclick="zoomIn()"><i class="fas fa-search-plus"></i></button>
+                            <button onclick="zoomOut()"><i class="fas fa-search-minus"></i></button>
+                            <button onclick="resetZoom()"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="star-map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color anime"></div>
+                        <span>ANIME SECTOR</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color superheroes"></div>
+                        <span>SUPERHERO SECTOR</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color gaming"></div>
+                        <span>GAMING SECTOR</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color fantasy"></div>
+                        <span>FANTASY SECTOR</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color sitcoms"></div>
+                        <span>SITCOMS SECTOR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sectors Selection Page -->
+        <div id="sectorsPage" class="page active">
+            <div class="sectors-grid">
+                <div class="sector-card anime" data-sector="anime">
+                    <div class="sector-icon"><i class="fas fa-star-christmas"></i></div>
+                    <div class="sector-title">ANIME</div>
+                    <div class="sector-description">Epic stories from the land of rising sun</div>
+                </div>
+
+                <div class="sector-card superheroes" data-sector="superheroes">
+                    <div class="sector-icon"><i class="fas fa-mask"></i></div>
+                    <div class="sector-title">SUPERHEROES</div>
+                    <div class="sector-description">Legendary heroes saving the universe</div>
+                </div>
+
+                <div class="sector-card gaming" data-sector="gaming">
+                    <div class="sector-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="sector-title">GAMING</div>
+                    <div class="sector-description">Digital adventures and virtual worlds</div>
+                </div>
+
+                <div class="sector-card fantasy" data-sector="fantasy">
+                    <div class="sector-icon"><i class="fas fa-dragon"></i></div>
+                    <div class="sector-title">FANTASY</div>
+                    <div class="sector-description">Mythical realms and magical creatures</div>
+                </div>
+
+                <div class="sector-card sitcoms" data-sector="sitcoms">
+                    <div class="sector-icon"><i class="fas fa-tv"></i></div>
+                    <div class="sector-title">SITCOMS / TV SHOWS</div>
+                    <div class="sector-description">Comedy and drama from the small screen</div>
+                </div>
+            </div>
+            <button class="end-session-btn" onclick="endTableTopicSession()"><i class="fas fa-stop-circle"></i> End Table Topic Session</button>
+        </div>
+
+        <!-- Questions Page -->
+        <div id="questionsPage" class="page">
+            <button class="back-button" onclick="showSectorsPage()"><i class="fas fa-arrow-left"></i> Back to Sectors</button>
+            
+            <!-- Cyberpunk Terminal -->
+            <div id="cyberpunkTerminal" class="cyberpunk-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title"><i class="fas fa-terminal"></i> QUANTUM TERMINAL v2.077</div>
+                    <div class="terminal-controls">
+                        <span class="terminal-control minimize"><i class="fas fa-minus"></i></span>
+                        <span class="terminal-control maximize"><i class="fas fa-square"></i></span>
+                        <span class="terminal-control close"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-output" id="terminalOutput">
+                        <div class="terminal-line">> SYSTEM INITIALIZED...</div>
+                        <div class="terminal-line">> LOADING QUANTUM QUESTIONS...</div>
+                        <div class="terminal-line">> READY FOR INPUT...</div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">></span>
+                        <input type="text" id="terminalInput" class="terminal-input" placeholder="Enter command..." />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="questions-container">
+                <div class="questions-header">
+                    <div class="sector-name" id="sectorName"></div>
+                    <p>Loading questions<span class="loading-dots"></span></p>
+                </div>
+                
+                <div class="questions-grid" id="questionsGrid">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+                
+                <div id="finalQuestion" style="display: none;">
+                    <div class="final-question">
+                        <h2>Your Selected Question</h2>
+                        <p id="selectedQuestionText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Off Page -->
+    <div id="signOffPage" class="page">
+        <div class="sign-off-container">
+            <div class="sign-off-message">
+                <div class="sign-off-text glitch-effect">Sharuuu Signing off....</div>
+                <div class="sign-off-subtext">See you take careee !!!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-modern.js"></script>
